@@ -41,16 +41,19 @@
 					<br/>
 					<div class="card">
 						<div class="card-header">
-						<h4 class="card-title"> <center>   Tambah Sistem </center></h4>
-            <p><h6>Nama:  <?php echo $datas->agent; ?></h6></p>
-            <p><h6>IP  :  <?php echo $datas->agent_ip; ?></h6></p>
-            <p><h6>Tipe: <?php if ($datas->tipe == 1) {
+						<h4 class="card-title"> <center>   Edit Sistem - 
+              <?php if ($datas->tipe == 1) {
               echo "Manual Control";
             }else {
               echo "Automatic Control";
-            } ?></h6></p>
+            } ?>
+
+            </center></h4>
+            <!-- <p><h6>Nama:  <?php echo $datas->agent; ?></h6></p> -->
+            <!-- <p><h6>IP  :  <?php echo $datas->agent_ip; ?></h6></p> -->
+            
             <?php
-            echo "<p>".$datas->tipe."</p>"; ?>
+            // echo "<p>".$datas->tipe."</p>"; ?>
 						</div>
 						<div class="card-body">
               <?php
@@ -64,6 +67,14 @@
                ?>
 								<table class="table">
                   <tr>
+                    <td colspan="2">Nama</td>
+                    <td colspan="4"> <input type="text" class='form-control' name="name" value="<?php echo $datas->agent; ?>"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">IP Address sensor</td>
+                    <td colspan="4"> <input type="text" class='form-control' name="ip" value="<?php echo $datas->agent_ip; ?>"></td>
+                  </tr>
+                  <tr>
                     <td>No</td>
                     <td>Nama Sensor</td>
                     <td>Pin Sensor</td>
@@ -73,8 +84,8 @@
                   </tr>
                   <?php echo $pin ?>
                   <input type="hidden" name="pin" value="<?php echo $count+$_GET['tambah']; ?>">
-                  <input type="hidden" name="ip" value=" <?php echo $datas->agent_ip; ?>">
-                  <input type="hidden" name="name" value="<?php echo $datas->agent; ?>">
+                  <!-- <input type="hidden" name="ip" value=" <?php echo $datas->agent_ip; ?>"> -->
+                  <!-- <input type="hidden" name="name" value="<?php echo $datas->agent; ?>"> -->
                   <input type="hidden" name="tipe" value="<?php echo $datas->tipe; ?>">
                   <input type="hidden" name="hiddens" value="<?php echo $id; ?>">
                   <?php echo $datas->type ?>
