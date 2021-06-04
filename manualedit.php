@@ -29,7 +29,7 @@
     <body style="background:#586df5;">
 		<div class="container">
 			<br/>
-         <!--    <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span> -->
+            <!-- <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span> -->
 			<div class="float-right">
 				<a href="index.php" class="btn btn-success btn-md" style="margin-right:1pc;"><span class="fa fa-home"></span> Kembali</a>
 				<a href="logout.php" class="btn btn-danger btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
@@ -61,7 +61,8 @@
                   echo "<form action='test.php' method='POST'>";
                   // echo "action='proses/crud.php?aksi=hello";
                 }else {
-                  echo "<form action='proses/crud.php?aksi=helloworld' method='POST'>";
+                  echo "<form action='testman.php?update=true' method='POST'>";
+                  // echo "get you";
                   // echo "                   action='proses/crud.php?aksi=helloworld";
                 }
                ?>
@@ -75,15 +76,9 @@
                     <td colspan="4"> <input type="text" class='form-control' name="ip" value="<?php echo $datas->agent_ip; ?>"></td>
                   </tr>
                   <tr>
-                    <td colspan="2">IP Address sensor</td>
-                    <td colspan="4"> <input type="text" class='form-control' name="ipcon" value="<?php echo $datas->controller_ip; ?>"></td>
-                  </tr>
-                  <tr>
                     <td>No</td>
                     <td>Nama Sensor</td>
                     <td>Pin Sensor</td>
-                    <td>Nilai Sensor</td>
-                    <td>pin aktuator</td>
                     <td>Aksi</td>
                   </tr>
                   <?php echo $pin ?>
@@ -104,15 +99,9 @@
                       echo "<td>";
                       echo "<input type='number' value='".$datas->sensor_pin[$i]."' class='form-control' name='sensor".$i."'>";
                       echo "</td>";
-                      echo "<td>";
-                      echo "<input type='number' value='".$datas->sensor_value[$i]."' class='form-control' name='nilai".$i."'>";
+                      echo "<td> <a href='deleterow.php?manual=true&id=".$id."&row=".$i."'>Hapus</a>";
                       echo "</td>";
-                      echo "<td>";
-                      echo "<input type='number' value='".$datas->actuator_pin[$i]."' class='form-control' name='actuator".$i."'>";
-                      echo "</td>";
-                      echo "<td> <a href='deleterow.php?id=".$id."&row=".$i."'>Hapus</a>";
-                      echo "</td>";
-                      echo "</tr>";
+                      echo "</tr>"; 
                     }for ($a=$i+1; $a < $i+$baris ; $a++) {
                       echo "<tr>";
                       echo "<td>".($a);
@@ -123,18 +112,12 @@
                       echo "<td>";
                       echo "<input type='number' value='' class='form-control' name='sensor".($a-1)."'>";
                       echo "</td>";
-                      echo "<td>";
-                      echo "<input type='number' value='' class='form-control' name='nilai".($a-1)."'>";
-                      echo "</td>";
-                      echo "<td>";
-                      echo "<input type='number' value='' class='form-control' name='actuator".($a-1)."'>";
-                      echo "</td>";
                       echo "</tr>";
                     }
                    ?>
 
                 </table>
-								<?php echo "<a href='edit.php?id=".$id."&tambah=".($baris)."'>Tambah Baris</a>"; ?><?php echo "<a href='edit.php?id=".$id."&tambah=".($baris-2)."'> | Hapus Baris</a>"; ?>   <button class="btn btn-primary btn-md" name="create" style="margin-left: 80%; margin-bottom: 20px;"><i class="fa fa-plus"> </i> Tambah Data</button>
+								<?php echo "<a href='manualedit.php?id=".$id."&tambah=".($baris)."'>Tambah Baris</a>"; ?><?php echo "<a href='manualedit.php?id=".$id."&tambah=".($baris-2)."'> | Hapus Baris</a>"; ?>   <button class="btn btn-primary btn-md" name="create" style="margin-left: 80%; margin-bottom: 20px;"><i class="fa fa-plus"> </i> Tambah Data</button>
 							</form>
               <br>
 

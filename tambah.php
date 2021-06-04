@@ -18,7 +18,7 @@
     <body style="background:#586df5;">
 		<div class="container">
 			<br/>
-            <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span>
+            <!-- <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span> -->
 			<div class="float-right">
 				<a href="index.php" class="btn btn-success btn-md" style="margin-right:1pc;"><span class="fa fa-home"></span> Kembali</a>
 				<a href="logout.php" class="btn btn-danger btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
@@ -48,7 +48,7 @@
 									<input type="number" value="" class="form-control" name="pin">
 								</div>
                 <div class="form-group">
-                  <label for="exampleFormControlSelect1">Example select</label>
+                  <label for="exampleFormControlSelect1">Type</label>
                   <select class="form-control" id="exampleFormControlSelect1" name="tipe">
                     <option value="1">Manual Control</option>
                     <option value="2">Automatic Control</option>

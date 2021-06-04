@@ -11,6 +11,7 @@
     $options = [];
     $datas=$collection->findOne($filter,$options);
     $key = $datas;
+    $coun = count($key->actuator_pin);
 ?>
 
 <!DOCTYPE HTML>
@@ -39,51 +40,85 @@
 
                     <?php if(!empty($_SESSION['ADMIN'])){?>
                     <br/>
-                    <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span>
+            <!--         <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span> -->
                     <a href="../logout.php" class="btn btn-danger btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
-                    <br/><br/>
-                    <a href="../tambah.php" class="btn btn-success btn-md"><span class="fa fa-plus"></span> Tambah</a>
+                    <!-- <br/><br/> -->
+                    <a href="../" class="btn btn-success btn-md"><span class="fa fa-home"></span> Home</a>
                     <br/><br/>
                     <div class="card">
                         <div class="card-header">
-                            <p><h4 class="card-title">Nama Agent :<?php echo $datas->agent; ?></h4></p>
+                            <table >
+                                <tr>
+                                    <td>Nama Sistem </td>
+                                    <td>:</td>
+                                    <td><?php echo $key->agent; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>ID </td>
+                                    <td>:</td>
+                                    <td><?php echo $key->id; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>IP Sensor </td>
+                                    <td>:</td>
+                                    <td><?php echo $key->agent_ip; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>IP Controller </td>
+                                    <td>:</td>
+                                    <td><?php echo $key->controller_ip; ?></td>
+                                </tr>
+
+                            </table>
+
                             <p></p>
                         </div>
                         <div class="card-body">
+                            <h4>Sensor</h4>
+                            <hr>
                             <table class="table table-hover table-bordered" id="mytable1" style="margin-top: 10px">
                                 <thead>
                                     <tr>
                                         <th width="50px">No</th>
-                                        <th>ID</th>
-                                        <th width="250px">Nama Sistem Hidoponik</th>
-                                        <th>IP Address</th>
-                                        <th width="250px">Jumlah Pin dan Aktuator</th>
+                                        <!-- <th>ID</th> -->
+                                        <th width="250px">Desc Sensor</th>
+                                        <th>Pin Sensor</th>
+                                        <th width="250px">Pin Aktuator</th>
+                                        <th style="text-align: center;">Status</th>
                                         <th style="text-align: center;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <?php $db = $con->TugasAkhir;
-                                    $collection = $db->informasiperangkat;
-
-                                    $filter = ['id' => $id];
-                                    $options = ['sort' => ['agent' => 1]];
-                                    $datas=$collection->find($filter,$options);
-                                    $num=1;
-                                    foreach ($datas as $key ) {
-                                      echo "<tr>";
-                                      echo "<td>".$num."</td>";
-                                      echo "<td>".$key->id."</td>";
-                                      echo "<td><a href='show.php?id=".$key->id."'>".$key->agent."</a></td>";
-                                      echo "<td>".$key->agent_ip."</td>";
-                                      echo "<td>".count($key->sensor_pin)." Sensor | ".count($key->actuator_pin)."Actuator</td>";
-                                      echo "<td> <a href= 'proses/crud.php?hapus=true&id=".$key->id."' >hapus</a></td>";
-                                      echo "</tr>";
-                                      $num+=1;
+                                  <?php 
+                                  // echo "$con";
+                                    for ($a=0; $a < $coun ; $a++) { 
+                                        echo "<tr>";
+                                        echo "<td>".($a+1)."</td>";
+                                        echo "<td>".$key->desc_sensor[$a]."</td>";
+                                        echo "<td>".$key->sensor_pin[$a]."</td>";
+                                        echo "<td>".$key->actuator_pin[$a]."</td>";
+                                        echo "<td>".$key->status[$a]."</td>";
+                                        if ($key->status[$a] == 'active') {
+                                            echo "<td> <center> <a href='../deleterow.php?tipe=deact&job=deact&id=".$key->id."&row=".$a."'><button type='button' class='btn btn-danger'>Deactivate</button></a></center></td>";
+                                        }else{
+                                            echo "<td> <center> <a href='../deleterow.php?tipe=deact&job=activ&id=".$key->id."&row=".$a."'><button type='button' class='btn btn-success'>Activate</button></a></center></td>";
+                                        }
+                                        echo "</tr>";
                                     }
-                                   ?>
 
+                                   ?>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+
+                    <br><br>
+                    <div class="card">
+                        <div class="card-header">
+                            
+                        </div>
+                        <div class="card-body">
+
                         </div>
                     </div>
                     <br>
@@ -103,8 +138,7 @@
 		</div>
         <script>
             $('#mytable').dataTable();
-
-                $('#mytable1').dataTable();
+            $('#mytable1').dataTable();
         </script>
 	</body>
 </html>

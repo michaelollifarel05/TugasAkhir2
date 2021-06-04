@@ -23,15 +23,15 @@
     <body style="background:#586df5;">
 		<div class="container">
 			<br/>
-            <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span>
+          <!--   <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span> -->
 			<div class="float-right">
 				<a href="index.php" class="btn btn-success btn-md" style="margin-right:1pc;"><span class="fa fa-home"></span> Kembali</a>
 				<a href="logout.php" class="btn btn-danger btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
 			</div>
 			<br/><br/><br/>
 			<div class="row">
-				<div class="col-sm-3"></div>
-				<div class="col-lg-6">
+				<div class="col-sm-1"></div>
+				<div class="col-lg-9">
 					<br/>
 					<div class="card">
 						<div class="card-header">
@@ -55,16 +55,31 @@
                   // echo "                   action='proses/crud.php?aksi=helloworld";
                 }
                ?>
-								<table>
+								<table class="table">
                   <input type="hidden" name="pin" value="<?php echo $pin; ?>">
-                  <input type="hidden" name="ip" value=" <?php echo $ip; ?>">
+                  <input type="hidden" name="ip" value="<?php echo $ip; ?>">
                   <input type="hidden" name="name" value="<?php echo $name; ?>">
                   <input type="hidden" name="tipe" value="<?php echo $type; ?>">
+                  <?php if ($type == 2): ?>
+                  <tr>
+                      <td>IP Controller :   </td>
+                      <!-- <td>:</td> -->
+                      <td colspan="3"><input type='text' value='' class='form-control' name='ipcon'></td>
+                  </tr>
+                    
+                  <?php endif ?>
                   <?php
                     for ($i=1; $i <= $pin ; $i++) {
                       echo "<tr>";
                       echo "<td>";
-                      echo "<label>Desc Sensor ".$i."</label>";
+                      // echo "<label>Nama Alat ".$i."</label>";
+                      if ($type ==2) {
+                      echo "<label>Nama Sensor </label>";
+                      }else{
+                      echo "<label>Nama Alat </label>";
+                        
+                      }
+
                       echo "<input type='text' value='' class='form-control' name='desc".$i."'>";
                       echo "</td>";
                       echo "<td>";

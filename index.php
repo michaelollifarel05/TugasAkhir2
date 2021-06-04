@@ -8,7 +8,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Tutorial Membuat CRUD PHP OOP dengan PDO MySQL</title>
+		<title>Tugas Akhir Kel 9 2020/2021</title>
 		<!-- BOOTSTRAP 4-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
         <!-- DATATABLES BS 4-->
@@ -32,8 +32,9 @@
                     <?php if(!empty($_SESSION['ADMIN'])){?>
                     <br/>
                     <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span>
+                    <br><br>
                     <a href="logout.php" class="btn btn-danger btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
-                    <br/><br/>
+                    <!-- <br/><br/> -->
                     <a href="tambah.php" class="btn btn-success btn-md"><span class="fa fa-plus"></span> Tambah</a>
                     <br/><br/>
                     <div class="card">
@@ -46,7 +47,7 @@
                                     <tr>
                                         <th width="50px">No</th>
                                         <th>ID</th>
-                                        <th width="250px">Nama Sistem Hidoponik</th>
+                                        <th width="250px">Nama Sistem </th>
                                         <th>IP Address</th>
                                         <th style="text-align: center;">Aksi</th>
                                     </tr>
@@ -65,7 +66,7 @@
                                       echo "<td>".$key->id."</td>";
                                       echo "<td><a href='proses/crud.php?tampil=true&id=".$key->id."'>".$key->agent."</a></td>";
                                       echo "<td>".$key->agent_ip."</td>";
-                                      echo "<td><a href= 'proses/crud.php?edit=true&id=".$key->id."' >hapus</a> | <a href= 'proses/crud.php?hapus=true&id=".$key->id."' >hapus</a></td>";
+                                      echo "<td><a href= 'manualedit.php?edit=man&id=".$key->id."' >Edit</a> | <a href= 'proses/crud.php?hapus=true&id=".$key->id."' >hapus</a></td>";
                                       echo "</tr>";
                                       $num+=1;
                                     }

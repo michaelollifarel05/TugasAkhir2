@@ -39,7 +39,7 @@
 
                     <?php if(!empty($_SESSION['ADMIN'])){?>
                     <br/>
-                    <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span>
+                 <!--    <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span> -->
                     <a href="../logout.php" class="btn btn-danger btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
                     <br/><br/>
                     <a href="../" class="btn btn-success btn-md"><span class="fa "></span>Home</a>
@@ -68,7 +68,7 @@
                                     echo "</td>";
                                     echo "<td>".$datas->status[$i];
                                     echo "</td>";
-                                    echo "<td> <a href= '../proses/control.php?command=Hidup&ip=".$datas->agent_ip."&pin=".$datas->sensor_pin[$i]."&id=".$id."&index=".$i."' >Hidup | </a><a href= '../proses/control.php?command=Mati&ip=".$datas->agent_ip."&pin=".$datas->sensor_pin[$i]."&id=".$id."&index=".$i."' >Mati</a></td>";
+                                    echo "<td> <a href= '../proses/control.php?id=".$id."&command=Hidup&ip=".$datas->agent_ip."&pin=".$datas->sensor_pin[$i]."&id=".$id."&index=".$i."' >Hidup | </a><a href= '../proses/control.php?id=".$id."&command=Mati&ip=".$datas->agent_ip."&pin=".$datas->sensor_pin[$i]."&id=".$id."&index=".$i."' >Mati</a></td>";
                                     echo "</tr>";
                                   } ?>
 

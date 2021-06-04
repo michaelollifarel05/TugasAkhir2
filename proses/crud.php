@@ -30,6 +30,7 @@
       $ip = $_POST['ip'];
       $agent = $_POST['name'];
       $tipe = $_POST['tipe'];
+      $ipcon= $_POST['ipcon'];
       for ($i=1; $i <= $count ; $i++) {
         $str_desc     = 'desc'.$i;
         $str_sensor   = 'sensor'.$i;
@@ -39,15 +40,18 @@
         $pin_aktuator[] = $_POST[$str_actuator];
         $desc_sensor[] = $_POST[$str_desc];
         $nilai_sensor[] = $_POST[$str_nilai];
+        $status[] = 'active';
       }
       $final = array(
         "id" => $id,
         "agent_ip" => $ip,
+        "controller_ip" => $ipcon, 
         "agent" => $agent,
         "sensor_pin" => $pin_sensor,
         "sensor_value" => $nilai_sensor,
         "actuator_pin" => $pin_aktuator,
         "desc_sensor" => $desc_sensor,
+        "status" => $status,
         "tipe" => $tipe
       );
       if($collection->insertOne($final)){
@@ -191,4 +195,11 @@
             echo "<script>window.location='../index.php';</script>";
         }
     }
+
+    if(!empty($_GET['edit'] == 'man')){
+      $id = $_GET['id'];
+      echo "$id";
+    }
+
+
 ?>

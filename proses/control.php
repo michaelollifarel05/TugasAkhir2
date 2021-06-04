@@ -19,8 +19,10 @@
   $datas=$collection->updateOne($filter,$options);
   echo $ip;
   if ($command == "Mati") {
-    echo "death";
+    $stat='off';
   }else {
-    echo "alive";
+    $stat='on';
   }
+
+  header('Location: http://localhost/TA/TA/urlmaker.php?ip='.$ip.'&pin=1&pinnum0='.$pin.'&status0='.$stat.'&id='.$id);
  ?>
