@@ -32,27 +32,33 @@
       $tipe = $_POST['tipe'];
       $ipcon= $_POST['ipcon'];
       for ($i=1; $i <= $count ; $i++) {
-        $str_desc     = 'desc'.$i;
-        $str_sensor   = 'sensor'.$i;
-        $str_nilai    = 'nilai'.$i;
-        $str_actuator = 'actuator'.$i;
-        $pin_sensor[] = $_POST[$str_sensor];
+        $str_desc       = 'desc'.$i;
+        $str_sensor     = 'sensor'.$i;
+        $str_nilai      = 'nilai'.$i;
+        $str_actuator   = 'actuator'.$i;
+        $str_state      = 'state'.$i;
+        $str_satuan     = 'satuan'.$i; 
+        $satuan[]       = $_POST[$str_satuan];
+        $state[]        = $_POST[$str_state];
+        $pin_sensor[]   = $_POST[$str_sensor];
         $pin_aktuator[] = $_POST[$str_actuator];
-        $desc_sensor[] = $_POST[$str_desc];
+        $desc_sensor[]  = $_POST[$str_desc];
         $nilai_sensor[] = $_POST[$str_nilai];
         $status[] = 'active';
       }
       $final = array(
-        "id" => $id,
-        "agent_ip" => $ip,
+        "id"            => $id,
+        "agent_ip"      => $ip,
         "controller_ip" => $ipcon, 
-        "agent" => $agent,
-        "sensor_pin" => $pin_sensor,
-        "sensor_value" => $nilai_sensor,
-        "actuator_pin" => $pin_aktuator,
-        "desc_sensor" => $desc_sensor,
-        "status" => $status,
-        "tipe" => $tipe
+        "agent"         => $agent,
+        "sensor_pin"    => $pin_sensor,
+        "sensor_value"  => $nilai_sensor,
+        "actuator_pin"  => $pin_aktuator,
+        "desc_sensor"   => $desc_sensor,
+        "state"         => $state,
+        "status"        => $status,
+        "satuan"        => $satuan,
+        "tipe"          => $tipe
       );
       if($collection->insertOne($final)){
         header('Location: http://localhost/TA/TA/');

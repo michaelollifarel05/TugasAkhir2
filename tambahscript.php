@@ -11,6 +11,7 @@
   }else {
     header('location:tambah.php');
   }
+  $short = " <option value='='>=</option> <option value='>'>></option> <option value='<'><</option><option value='<'>!=</option>" ;
 ?>
 
 <!DOCTYPE HTML>
@@ -30,12 +31,12 @@
 			</div>
 			<br/><br/><br/>
 			<div class="row">
-				<div class="col-sm-1"></div>
-				<div class="col-lg-9">
+				<!-- <div class="col-sm-2"></div> -->
+				<div class="col-lg-11">
 					<br/>
 					<div class="card">
 						<div class="card-header">
-						<h4 class="card-title"> <center>   Tambah Sistem </center></h4>
+						<h4 class="card-title"> <center>   Tambah Data Agent </center></h4>
             <p><h6>Nama:  <?php echo $name; ?></h6></p>
             <p><h6>IP  :  <?php echo $ip; ?></h6></p>
             <p><h6>Pin:  <?php echo $pin; ?></h6></p>
@@ -48,10 +49,10 @@
 						<div class="card-body">
               <?php
                 if($type==2){
-                  echo "<form action='proses/crud.php?aksi=hello' method='POST'>";
+                  echo "<form action='proses/crud.php?aksi=hello' method='POST'>"; // AUTOMATIC
                   // echo "action='proses/crud.php?aksi=hello";
                 }else {
-                  echo "<form action='proses/crud.php?aksi=helloworld' method='POST'>";
+                  echo "<form action='proses/crud.php?aksi=helloworld' method='POST'>"; //MANUAL
                   // echo "                   action='proses/crud.php?aksi=helloworld";
                 }
                ?>
@@ -83,18 +84,28 @@
                       echo "<input type='text' value='' class='form-control' name='desc".$i."'>";
                       echo "</td>";
                       echo "<td>";
-                      echo "<label>Pin Sensor ".$i."</label>";
-                      echo "<input type='number' value='' class='form-control' name='sensor".$i."'>";
+                      echo "<label>Pin Aktuator ".$i."</label>";
+                      echo "<input type='text' value='' class='form-control' name='sensor".$i."'>";
                       echo "</td>";
 
                       if ($type==2) {
+
+                        echo "<td>";
+                        echo "<label>State ".$i."</label>";
+                        echo "<select class='form-control'  name='state".$i."'>";
+                        echo $short;
+                        echo "</td>";
                         echo "<td>";
                         echo "<label>Nilai sensor ".$i."</label>";
-                        echo "<input type='number' value='' class='form-control' name='nilai".$i."'>";
+                        echo "<input type='text' value='' class='form-control' name='nilai".$i."'>";
+                        echo "</td>";
+                        echo "<td>";
+                        echo "<label>Satuan ".$i."</label>";
+                        echo "<input type='text' value='' class='form-control' name='satuan".$i."'>";
                         echo "</td>";
                         echo "<td>";
                         echo "<label>Pin Aktuator ".$i."</label>";
-                        echo "<input type='number' value='' class='form-control' name='actuator".$i."'>";
+                        echo "<input type='text' value='' class='form-control' name='actuator".$i."'>";
                         echo "</td>";
                         echo "</tr>";
                       }

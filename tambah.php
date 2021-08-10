@@ -30,7 +30,7 @@
 					<br/>
 					<div class="card">
 						<div class="card-header">
-						<h4 class="card-title">Tambah Sistem </h4>
+						<h4 class="card-title">Tambah Device </h4>
 						</div>
 						<div class="card-body">
 							<form action="tambahscript.php" method="POST">
@@ -44,7 +44,7 @@
 									<input type="text" value="" class="form-control" name="ipaddr">
 								</div>
 								<div class="form-group">
-									<label>Jumlah Pin dan Aktuator</label>
+									<label>Jumlah Sensor</label>
 									<input type="number" value="" class="form-control" name="pin">
 								</div>
                 <div class="form-group">

@@ -16,6 +16,7 @@
   $options = [];
   $datas=$collection->findOne($filter,$options);
   $count = count($datas->sensor_pin);
+  $short = " <option value='='>=</option> <option value='>'>></option> <option value='<'><</option><option value='<'>!=</option>" ;
 ?>
 
 
@@ -41,7 +42,7 @@
 					<br/>
 					<div class="card">
 						<div class="card-header">
-						<h4 class="card-title"> <center>   Edit Sistem - 
+						<h4 class="card-title"> <center>   Edit Device - 
               <?php if ($datas->tipe == 1) {
               echo "Manual Control";
             }else {
@@ -75,14 +76,16 @@
                     <td colspan="4"> <input type="text" class='form-control' name="ip" value="<?php echo $datas->agent_ip; ?>"></td>
                   </tr>
                   <tr>
-                    <td colspan="2">IP Address sensor</td>
+                    <td colspan="2">IP Address Controller</td>
                     <td colspan="4"> <input type="text" class='form-control' name="ipcon" value="<?php echo $datas->controller_ip; ?>"></td>
                   </tr>
                   <tr>
                     <td>No</td>
                     <td>Nama Sensor</td>
                     <td>Pin Sensor</td>
+                    <td>State</td>
                     <td>Nilai Sensor</td>
+                    <td>Satuan</td>
                     <td>pin aktuator</td>
                     <td>Aksi</td>
                   </tr>
@@ -102,13 +105,21 @@
                       echo "<input type='text' value='".$datas->desc_sensor[$i]."' class='form-control' name='desc".$i."'>";
                       echo "</td>";
                       echo "<td>";
-                      echo "<input type='number' value='".$datas->sensor_pin[$i]."' class='form-control' name='sensor".$i."'>";
+                      echo "<input type='text' value='".$datas->sensor_pin[$i]."' class='form-control' name='sensor".$i."'>";
+                      echo "</td>";
+
+                      echo "<td>";
+                      echo "<input type='text' value='".$datas->state[$i]."' class='form-control' name='state".$i."'>";
+                      echo "</td>";
+
+                      echo "<td>";
+                      echo "<input type='text' value='".$datas->sensor_value[$i]."' class='form-control' name='nilai".$i."'>";
                       echo "</td>";
                       echo "<td>";
-                      echo "<input type='number' value='".$datas->sensor_value[$i]."' class='form-control' name='nilai".$i."'>";
+                      echo "<input type='text' value='".$datas->satuan[$i]."' class='form-control' name='satuan".$i."'>";
                       echo "</td>";
                       echo "<td>";
-                      echo "<input type='number' value='".$datas->actuator_pin[$i]."' class='form-control' name='actuator".$i."'>";
+                      echo "<input type='text' value='".$datas->actuator_pin[$i]."' class='form-control' name='actuator".$i."'>";
                       echo "</td>";
                       echo "<td> <a href='deleterow.php?id=".$id."&row=".$i."'>Hapus</a>";
                       echo "</td>";
@@ -121,13 +132,20 @@
                       echo "<input type='text' value='desc".$a."' class='form-control' name='desc".($a-1)."'>";
                       echo "</td>";
                       echo "<td>";
-                      echo "<input type='number' value='' class='form-control' name='sensor".($a-1)."'>";
+                      echo "<input type='text' value='' class='form-control' name='sensor".($a-1)."'>";
                       echo "</td>";
                       echo "<td>";
-                      echo "<input type='number' value='' class='form-control' name='nilai".($a-1)."'>";
+                      echo "<select class='form-control'  name='state".$i."'>";
+                      echo $short;
                       echo "</td>";
                       echo "<td>";
-                      echo "<input type='number' value='' class='form-control' name='actuator".($a-1)."'>";
+                      echo "<input type='text' value='' class='form-control' name='nilai".($a-1)."'>";
+                      echo "</td>";
+                      echo "<td>";
+                      echo "<input type='text' value='' class='form-control' name='satuan".($a-1)."'>";
+                      echo "</td>";
+                      echo "<td>";
+                      echo "<input type='text' value='' class='form-control' name='actuator".($a-1)."'>";
                       echo "</td>";
                       echo "</tr>";
                     }

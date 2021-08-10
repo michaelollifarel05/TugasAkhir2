@@ -27,10 +27,12 @@ if (empty($_GET['tipe']== 'deact')) {
 	$check = $_GET['job'];
 	if ($_GET['job'] == 'activ') {
 		$options = ['$set' => ['status.'.$row => 'active']];
-		// echo "h";
+		header('Location: http://localhost/TA/TA/show/auto.php?id='.$id);
 	}else{
 		$options = ['$set' => ['status.'.$row => 'deactivate']];
 		// echo "string";
+		
+		header('Location: http://localhost/TA/TA/show/auto.php?id='.$id);
 	}
 	$datas=$collection->updateOne($filter,$options);
 }

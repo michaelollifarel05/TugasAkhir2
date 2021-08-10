@@ -47,7 +47,7 @@
                                     <tr>
                                         <th width="50px">No</th>
                                         <th>ID</th>
-                                        <th width="250px">Nama Sistem </th>
+                                        <th width="250px">Nama Device </th>
                                         <th>IP Address</th>
                                         <th style="text-align: center;">Aksi</th>
                                     </tr>
@@ -87,7 +87,7 @@
                                     <tr>
                                         <th width="50px">No</th>
                                         <th>ID</th>
-                                        <th width="250px">Nama Sistem Hidoponik</th>
+                                        <th width="250px">Nama Device</th>
                                         <th>IP Address</th>
                                         <th width="200px">Jumlah Pin dan Aktuator</th>
                                         <th style="text-align: center;">Aksi</th>
@@ -118,6 +118,8 @@
                             </table>
                         </div>
                     </div>
+                    
+            <div><p><p><p></p></p></p><a href="usermanual.php" class="btn btn-success btn-md"><span class="fa fa-book"></span> User Manual</a></div>
                     <?php }else{?>
                         <br/>
                         <center>

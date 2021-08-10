@@ -41,7 +41,7 @@
 					<br/>
 					<div class="card">
 						<div class="card-header">
-						<h4 class="card-title"> <center>   Edit Sistem - 
+						<h4 class="card-title"> <center>   Edit Device - 
               <?php if ($datas->tipe == 1) {
               echo "Manual Control";
             }else {
@@ -107,7 +107,7 @@
                       echo "<td>".($a);
                       echo "</td>";
                       echo "<td>";
-                      echo "<input type='text' value='desc".$a."' class='form-control' name='desc".($a-1)."'>";
+                      echo "<input type='text' value='' class='form-control' name='desc".($a-1)."'>";
                       echo "</td>";
                       echo "<td>";
                       echo "<input type='number' value='' class='form-control' name='sensor".($a-1)."'>";

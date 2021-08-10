@@ -23,7 +23,7 @@ for ($i=0; $i < $count ; $i++) {
   // $pin_aktuator[] = $_POST[$str_actuator];
   $desc_sensor[] = $_POST[$str_desc];
   // $nilai_sensor[] = $_POST[$str_nilai];
-  $status[] = 'hidup';
+  $status[] = 'mati';
 }
 $final = array(
   "id" => $id,

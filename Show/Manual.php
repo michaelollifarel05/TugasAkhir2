@@ -30,7 +30,22 @@
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <!-- BOOTSTRAP 4-->
         <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
+        <style>
+            .dotgreen {
+              height: 10px;
+              width: 10px;
+              background-color: #00ff00;
+              border-radius: 50%;
+              display: inline-block;
+            }
+            .dotred {
+              height: 10px;
+              width: 10px;
+              background-color: red;
+              border-radius: 50%;
+              display: inline-block;
+            }
+        </style>
     </head>
     <body style="background:#586df5;">
         <div class="container">
@@ -41,7 +56,7 @@
                     <br/>
                  <!--    <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span> -->
                     <a href="../logout.php" class="btn btn-danger btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
-                    <br/><br/>
+                    
                     <a href="../" class="btn btn-success btn-md"><span class="fa "></span>Home</a>
                     <br/><br/>
                     <div class="card">
@@ -66,7 +81,12 @@
                                     echo "</td>";
                                     echo "<td>".$datas->desc_sensor[$i];
                                     echo "</td>";
-                                    echo "<td>".$datas->status[$i];
+                                    if ($datas->status[$i] =="mati") {
+                                        echo "<td> <span class='dotred'></span> ".$datas->status[$i];
+                                    }else{
+                                    echo "<td> <span class='dotgreen'></span> ".$datas->status[$i];
+                                    }
+                                    // echo "<td> <span class='dotgreen'></span>".$datas->status[$i];
                                     echo "</td>";
                                     echo "<td> <a href= '../proses/control.php?id=".$id."&command=Hidup&ip=".$datas->agent_ip."&pin=".$datas->sensor_pin[$i]."&id=".$id."&index=".$i."' >Hidup | </a><a href= '../proses/control.php?id=".$id."&command=Mati&ip=".$datas->agent_ip."&pin=".$datas->sensor_pin[$i]."&id=".$id."&index=".$i."' >Mati</a></td>";
                                     echo "</tr>";

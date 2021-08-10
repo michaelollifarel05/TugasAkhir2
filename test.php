@@ -9,9 +9,11 @@ $options = [];
 $datas=$collection->findOne($filter,$options);
 $key = $datas;
 $tempArray = $key->status;
+
 $status[] = $key->status; 
 $hapus = $collection->deleteOne(['id' => $_POST['hiddens']]);
 $count = $_POST['pin'];
+$tempArray[$count]="active";
 $pin_sensor = array();
 $pin_aktuator = array();
 $desc_sensor = array();
@@ -26,6 +28,10 @@ for ($i=0; $i < $count ; $i++) {
   $str_sensor   = 'sensor'.$i;
   $str_nilai    = 'nilai'.$i;
   $str_actuator = 'actuator'.$i;
+  $str_state    = 'state'.$i;
+  $str_satuan   = 'satuan'.$i;
+  $satuan[]     = $_POST[$str_satuan];
+  $state[]      = $_POST[$str_state];
   $pin_sensor[] = $_POST[$str_sensor];
   $pin_aktuator[] = $_POST[$str_actuator];
   $desc_sensor[] = $_POST[$str_desc];
@@ -40,7 +46,9 @@ $final = array(
   "sensor_value" => $nilai_sensor,
   "actuator_pin" => $pin_aktuator,
   "desc_sensor" => $desc_sensor,
+  "state"       => $state,
   "status" => $tempArray,
+  "satuan" => $satuan,
   "tipe" => $tipe
 );
 $ok = $collection->insertOne($final);
